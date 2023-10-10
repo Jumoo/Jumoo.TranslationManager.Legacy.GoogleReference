@@ -1,0 +1,28 @@
+﻿<div ng-controller="translate.defaultRouteController as vm"
+     ng-init="vm.page = { title: 'Providers'}">
+    <form name="providerRoot" novalidate>
+        <umb-editor-view>
+            <umb-editor-header name="vm.page.title"
+                               name-locked="true"
+                               hide-alias="true"
+                               hide-description="true"
+                               hide-icon="true">
+            </umb-editor-header>
+            <umb-editor-container>
+                <div class="umb-pane">
+                    <div class="row">
+                        <div class="span6">
+
+                            <translate-app-status></translate-app-status>
+
+                            <localize key="translate_providersIntro">
+                                <h3>Translation Providers</h3>
+                            </localize>
+                        </div>
+                    </div>
+                </div>
+            </umb-editor-container>
+
+        </umb-editor-view>
+    </form>
+</div>

@@ -1,0 +1,69 @@
+﻿{
+  "javascript": [
+    "~/App_Plugins/TranslationManager/translationManager.2.0.0.30.js",
+
+    "~/App_Plugins/TranslationManager/dashboard.Controller.js",
+
+    "~/App_Plugins/TranslationManager/libs/ng-file-upload-all.js",
+
+    "~/App_Plugins/TranslationManager/services/cultureService.js",
+    "~/App_Plugins/TranslationManager/services/jobService.js",
+    "~/App_Plugins/TranslationManager/services/nodeService.js",
+    "~/App_Plugins/TranslationManager/services/setService.js",
+    "~/App_Plugins/TranslationManager/services/fileUploadService.js",
+    "~/App_Plugins/TranslationManager/services/providerService.js",
+    "~/App_Plugins/TranslationManager/services/settingsService.js",
+    "~/App_Plugins/TranslationManager/services/dictionaryService.js",
+    "~/App_Plugins/TranslationManager/services/translateTitleService.js",
+
+    "~/App_Plugins/TranslationManager/services/translationValueOrderFilter.js",
+
+    "~/App_Plugins/TranslationManager/backoffice/tm/job.Controller.js",
+    "~/App_Plugins/TranslationManager/backoffice/tm/item.Controller.js",
+
+    "~/App_Plugins/TranslationManager/backoffice/tm/pending.Controller.js",
+    "~/App_Plugins/TranslationManager/backoffice/tm/pending_root.Controller.js",
+    "~/App_Plugins/TranslationManager/backoffice/tm/received.Controller.js",
+    "~/App_Plugins/TranslationManager/backoffice/tm/received_root.Controller.js",
+    "~/App_Plugins/TranslationManager/backoffice/tm/submitted.Controller.js",
+    "~/App_Plugins/TranslationManager/backoffice/tm/submitted_root.Controller.js",
+    "~/App_Plugins/TranslationManager/backoffice/tm/archive.Controller.js",
+    "~/App_Plugins/TranslationManager/backoffice/tm/archive_root.Controller.js",
+
+
+    "~/App_Plugins/TranslationManager/backoffice/defaultRouteController.js",
+    "~/App_Plugins/TranslationManager/backoffice/providerConfig.Controller.js",
+
+    "~/App_Plugins/TranslationManager/backoffice/sets/setEdit.Controller.js",
+    "~/App_Plugins/TranslationManager/backoffice/sets/create.controller.js",
+    "~/App_Plugins/TranslationManager/backoffice/sets/delete.controller.js",
+    "~/App_Plugins/TranslationManager/backoffice/sets/providerConfig.controller.js",
+    "~/App_Plugins/TranslationManager/backoffice/sets/settings.controller.js",
+    "~/App_Plugins/TranslationManager/backoffice/sets/dictionary.controller.js",
+
+    "~/App_Plugins/TranslationManager/backoffice/dialogs/sendToTranslate.Controller.js",
+    "~/App_Plugins/TranslationManager/backoffice/dialogs/getTranslations.Controller.js",
+    "~/App_Plugins/TranslationManager/backoffice/dialogs/historyController.js",
+    "~/App_Plugins/TranslationManager/backoffice/dialogs/targetStatusController.js",
+    "~/App_Plugins/TranslationManager/backoffice/dialogs/openSiblingDialogController.js",
+
+
+    "~/App_Plugins/TranslationManager/sitepicker/picker.controller.js",
+    "~/App_Plugins/TranslationManager/sitepicker/pickerDialog.Controller.js",
+
+    "~/App_Plugins/TranslationManager/directives/itemView.Directive.js",
+    "~/App_Plugins/TranslationManager/directives/jobView.Directive.js",
+    "~/App_Plugins/TranslationManager/directives/buildStatus.Directive.js",
+    "~/App_Plugins/TranslationManager/directives/jobSetup.Directive.js",
+    "~/App_Plugins/TranslationManager/directives/providerView.Directive.js",
+    "~/App_Plugins/TranslationManager/directives/languagePicker.Directive.js",
+
+    "~/App_Plugins/TranslationManager/translateHub.js"
+  ],
+  "css": [
+    "~/App_Plugins/TranslationManager/translationManager.css",
+    "~/App_Plugins/TranslationManager/translate.css", 
+    "~/App_Plugins/TranslationManager/translationManager.2.0.0.30.css"
+
+  ]
+}

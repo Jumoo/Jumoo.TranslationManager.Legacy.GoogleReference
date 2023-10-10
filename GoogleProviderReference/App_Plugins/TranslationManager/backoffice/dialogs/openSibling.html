@@ -1,0 +1,56 @@
+﻿<div class="umb-panel" ng-controller="translateOpenSiblingDialogController as vm">
+    <div class="umb-panel-header">
+        <h4>Open Siblings</h4>
+    </div>
+    <div class="umb-panel-body with-footer">
+        <umb-load-indicator ng-if="vm.loading"></umb-load-indicator>
+        <div ng-if="!vm.loading">
+            <div>
+                this bit of content currently has the following open nodes.
+            </div>
+            <p>
+
+            </p>
+            <hr />
+            <div>
+                <div class="translate-node-history translate-history-header">
+                    <div></div>
+                    <div class="translate-history-language">Status</div>
+                    <div class="translate-history-date">Updated</div>
+                    <div class="translate-history-status">Job</div>
+                </div>
+                <div ng-repeat="node in vm.siblings" class="translate-node-history"
+                     ng-click="vm.showNav(node)">
+                    <div>
+                        <i class="icon-check color-green" ng-if="node.Status == 'Approved'"></i>
+                        <i class="icon-axis-rotation color-orange" ng-if="node.Status == 'InProgress'"></i>
+                        <i class="icon-document-dashed-line color-blue" ng-if="node.Status == 'Open'"></i>
+                        <i class="icon-search color-yellow" ng-if="node.Status == 'Reviewing'"></i>
+                        <i class="icon-wrong muted" ng-if="node.Status == 'Closed'"></i>
+                        <i class="icon-wrong color-red" ng-if="node.Status == 'Error'"></i>
+                    </div>
+                    <div class="translate-history-language">{{node.Status}}</div>
+                    <div class="translate-history-date">{{node.Updated | date:'dd MMM yyyy HH:mm'}}</div>
+                    <div class="translate-history-status">
+                        <span ng-show="node.JobId != 0">
+                            {{node.JobId}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="umb-panel-footer">
+        <div class="umb-el-wrap umb-panel-buttons">
+            <div class="btn-toolbar umb-btn-toolbar pull-right">
+                <a href ng-click="close()" class="btn btn-link">
+                    <localize key="general_cancel">Cancel</localize>
+                </a>
+                <button class="btn btn-default"
+                        ng-click="vm.returnToOriginal()">
+                    Return to orginal node
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

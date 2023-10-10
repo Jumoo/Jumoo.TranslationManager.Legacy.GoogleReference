@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>Jumoo.TranslationManager.Legacy.Google</id>
+    <version>2.0.2</version>
+    <title>[LEGACY] Jumoo Translate. Google Translation API Provider</title>
+    <authors>Kevin Jump</authors>
+    <owners>Jumoo</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Google Translation API Provider for Translation Manager for Umbraco</description>
+    <summary>Google Translation API</summary>
+    <releaseNotes><![CDATA[
+      1.0.0 Production Release
+      2.0.0 Namespace Updates
+    ]]></releaseNotes>
+    <copyright>Jumoo 2017</copyright>
+    <tags>umbraco, umbraco-cms, translations</tags>
+    <dependencies>
+      <dependency id="Jumoo.TranslationManager.Core" version="2.0.1" />
+      <dependency id="Google.Cloud.Translation.V2" version="1.0.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\release\GoogleProviderReference.dll" target="lib\net46" />
+    <file src="App_Plugins\TranslateProvider.Google\**\*.*" target="content\App_Plugins\TranslateProvider.Google" />
+  </files>
+</package>

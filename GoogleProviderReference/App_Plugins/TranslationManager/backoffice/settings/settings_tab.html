@@ -1,0 +1,34 @@
+﻿<div class="page-header">
+    <small>
+        Global settings - used across all sets and languages
+    </small>
+</div>
+<umb-control-group label="Translate on Save"
+                   description="Send changes to translate when a user saves or publishes new content">
+    <input type="checkbox" ng-model="vm.settings.AutoTranslate" />
+</umb-control-group>
+
+<umb-control-group label="Background Check"
+                   description="Check status of submitted jobs in background">
+    <input type="checkbox" ng-model="vm.settings.BackgroundCheck" />
+</umb-control-group>
+<umb-control-group label="Check Period"
+                   description="How often (in seconds) to poll providers for job status (requires restart)">
+    <input type="number" ng-model="vm.settings.CheckPeriod" />
+</umb-control-group>
+
+<umb-control-group label="Include Empty Nodes"
+                   description="Include nodes that have no translatable text in jobs">
+    <input type="checkbox" ng-model="vm.settings.IncludeEmpty" />
+</umb-control-group>
+
+
+<umb-control-group label="Show Item History"
+                   description="Include the Translation History option on a content items context menu">
+    <input type="checkbox" ng-model="vm.settings.ShowHistory" />
+</umb-control-group>
+
+<umb-control-group label="Batch Size"
+                   description="Number of items to process in a batch (to prevent timeout issues)">
+    <input type="number" ng-model="vm.settings.BatchSize" />
+</umb-control-group>

@@ -1,0 +1,34 @@
+﻿<div ng-controller="translate.googleProviderController as pvm">
+    <h3 class="page-header">Google Translation API</h3>
+    <p>
+        Cloud Translation API provides a simple programmatic interface for
+        translating an arbitrary string into any supported language using
+        state-of-the-art Neural Machine Translation.
+    </p>
+    <ul>
+        <li>
+            <a href="https://cloud.google.com/translate/"
+               target="_blank">Google Translation API </a>
+        </li>
+    </ul>
+    <hr />
+    <div class="form-horizontal">
+        <h4 class="page-header">Translation Config</h4>
+        <p>
+            In order to use the Google Translation API, you will need to supply
+            an API Key, follow the
+            <a href="https://cloud.google.com/translate/docs/getting-started">quick start guide</a> for setting up your API key
+        </p>
+
+        <hr />
+
+        <umb-control-group label="Api Key" description="Google Translation API Key">
+            <input type="text" ng-model="vm.settings.apiKey" class="umb-editor umb-textstring textstring" />
+        </umb-control-group>
+
+        <umb-control-group label="Throttle" description="Number of milliseconds to wait between calls">
+            <input type="number" ng-model="vm.settings.throttle" class="umb-editor umb-textstring textstring" />
+        </umb-control-group>
+
+    </div>
+</div>

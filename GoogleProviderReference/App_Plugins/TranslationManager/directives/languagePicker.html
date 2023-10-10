@@ -1,0 +1,47 @@
+﻿<div class="language-picker">
+    <!-- language picker -->
+    <h4><localize key="translate_translateTo">Translate To</localize></h4>
+    <div ng-show="languageDropdown != true">
+        <div ng-repeat="set in sets">
+            <h5 ng-if="sets.length > 1">{{set.Name}}</h5>
+            <div class="tp-set-site-list">
+                <div ng-repeat="site in set.Sites" class="tp-site-checkbox">
+                    <input type="checkbox" id="chk_{{site.Id}}_{{$index}}"
+                           ng-model="site.checked" ng-click="updateCount()"/>
+                    <label for="chk_{{site.Id}}_{{$index}}">
+                        {{site.Culture.DisplayName}} 
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="languageDropdown == true">
+        <div class="list">
+            <div class="input-append">
+                <select ng-model="selectedSet">
+                    <optgroup ng-repeat="set in sets" label="{{set.Name}}">
+                        <option ng-repeat="site in set.Sites"
+                                value="{{site.Id}}_{{site.CultureId}}">
+                            {{site.Culture.DisplayName}}
+                        </option>
+                    </optgroup>
+                </select>
+                <button class="btn btn-success" ng-click="addLanguage()">Add</button>
+            </div>
+        </div>
+
+        <div>
+            <span ng-repeat="set in sets">
+                <span ng-repeat="site in set.Sites">
+                    <span ng-if="site.checked" class="pending-item" title="{{set.Name}}">
+                        {{site.Culture.DisplayName}}
+                        <a href ng-click="removeLanguage($event, site)">
+                            <i class="icon icon-wrong color-red"></i>
+                        </a>
+                    </span>
+                </span>
+            </span>
+        </div>
+    </div>
+</div>

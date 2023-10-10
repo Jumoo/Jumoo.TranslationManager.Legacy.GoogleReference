@@ -1,0 +1,29 @@
+﻿<div class="page-header">
+    <small>
+        Translation Manager - Diagnostic Information
+    </small>
+
+    <h2>Core Version : {{vm.info.CoreVersion}} <small ng-if="vm.uptodate" class="text-success"><i class="icon icon-check"></i> latest version</small></h2>
+
+    <div ng-if="!vm.uptodate" class="alert-warning alert">A newer version {{vm.update.Version}} is avalible at <a href="{{vm.update.Link}}" target="_blank">{{vm.update.Link}}</a></div>
+
+    <div ng-if="vm.update.Message != ''" class="alert alert-info">{{vm.update.Message}}</div>
+
+    <div>
+        <h3>Providers</h3>
+        <ul>
+            <li ng-repeat="provider in vm.info.Providers">
+                {{provider.Name}} <em>{{provider.Alias}} [{{provider.Enabled}}]</em> 
+            </li>
+        </ul>
+    </div>
+
+    <div>
+        <h3>Mappers</h3>
+        <ul>
+            <li ng-repeat="mapper in vm.info.Mappers">
+                <strong>{{mapper.Editor}}</strong> -> {{mapper.Name}}
+            </li>
+        </ul>
+    </div>
+</div>

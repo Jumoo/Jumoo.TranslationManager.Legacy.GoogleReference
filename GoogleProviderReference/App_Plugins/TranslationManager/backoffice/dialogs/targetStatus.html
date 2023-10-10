@@ -1,0 +1,93 @@
+﻿<div class="translatePlus" ng-controller="translate.targetStatusController as vm" ng-cloak>
+    <div class="umb-dialog-body">
+        <div class="umb-pane">
+            <div ng-if="!vm.loaded">
+                <div class="send-busy-msg">{{vm.update}}</div>
+                <umb-load-indicator></umb-load-indicator>
+            </div>
+
+            <div ng-if="vm.loaded">
+                <p>Status For <strong><i class="{{vm.node.icon}}"></i> {{vm.node.name}}</strong> </p>
+
+                <h5><localize key="translateHistory_currentVersions">Current Version</localize></h5>
+                <div ng-if="(vm.status | filter:{IsCurrent:'true'}).length == 0">
+                    <div class="alert alert-warning">
+                        <i class="icon icon-wrong"></i>
+                        The content in this node is not upto date with the node in the master site.
+                    </div>
+                </div>
+                <div ng-if="(vm.status | filter:{IsCurrent:'true'}).length > 0">
+
+                    <div class="translate-node-history translate-history-header">
+                        <div><i class="icon-checkbox-empty"></i></div>
+                        <div class="translate-history-date"><localize key="translateHistory_created">created</localize></div>
+                        <div class="translate-history-date"><localize key="translateHistory_updated">updated</localize></div>
+                        <div class="translate-history-status"><localize key="translateHistory_status">Status</localize></div>
+                    </div>
+                    <div ng-repeat="node in vm.status | filter:{IsCurrent:'true'}" class="translate-node-history"
+                         ng-class="{'text-success' : node.Status == 'Approved'}"
+                         ng-click="vm.historyNav(node)">
+                        <div>
+                            <i class="icon-check color-green" ng-if="node.Status == 'Approved'"></i>
+                            <i class="icon-axis-rotation color-orange" ng-if="node.Status == 'InProgress'"></i>
+                            <i class="icon-document-dashed-line color-blue" ng-if="node.Status == 'Open'"></i>
+                            <i class="icon-search color-yellow" ng-if="node.Status == 'Reviewing'"></i>
+                            <i class="icon-wrong muted" ng-if="node.Status == 'Closed'"></i>
+                            <i class="icon-wrong color-red" ng-if="node.Status == 'Error'"></i>
+                        </div>
+                        <div class="translate-history-date">{{node.Created | date:'dd MMM yyyy HH:mm'}}</div>
+                        <div class="translate-history-date">{{node.Updated | date:'dd MMM yyyy HH:mm'}}</div>
+
+                        <div ng-if="node.Id == 0"
+                             class="translate-history-status">
+                            <localize key="translateHistory_none">none</localize>
+                        </div>
+                        <div ng-if="node.Id > 0"
+                             class="translate-history-status">{{vm.showStatus(node.Status)}}</div>
+                    </div>
+                </div>
+
+                <div ng-if="(vm.status | filter:{IsCurrent:'false'}).length > 0">
+                    <!-- previous -->
+                    <h5><localize key="translateHistory_previousVersions">Previous Versions</localize></h5>
+                    <p>
+                        Translations based on previous versions of the master content
+                    </p>
+                    <div class="translate-node-history translate-history-header">
+                        <div><i class="icon-checkbox-empty"></i></div>
+                        <div class="translate-history-date"><localize key="translateHistory_created">updated</localize></div>
+                        <div class="translate-history-date"><localize key="translateHistory_updated">updated</localize></div>
+                        <div class="translate-history-status"><localize key="translateHistory_status">Status</localize></div>
+                    </div>
+                    <div ng-repeat="node in vm.status | filter:{IsCurrent:'false'}" class="translate-node-history"
+                         ng-class="{'text-success' : node.Status == 'Approved'}"
+                         ng-click="vm.historyNav(node)">
+                        <div>
+                            <i class="icon-check color-green" ng-if="node.Status == 'Approved'"></i>
+                            <i class="icon-axis-rotation color-orange" ng-if="node.Status == 'InProgress'"></i>
+                            <i class="icon-document-dashed-line color-blue" ng-if="node.Status == 'Open'"></i>
+                            <i class="icon-search color-yellow" ng-if="node.Status == 'Reviewing'"></i>
+                            <i class="icon-wrong muted" ng-if="node.Status == 'Closed'"></i>
+                            <i class="icon-wrong color-red" ng-if="node.Status == 'Error'"></i>
+                        </div>
+                        <div class="translate-history-date">{{node.Created | date:'dd MMM yyyy HH:mm'}}</div>
+                        <div class="translate-history-date">{{node.Updated | date:'dd MMM yyyy HH:mm'}}</div>
+
+                        <div ng-if="node.Id == 0"
+                             class="translate-history-status">
+                            <localize key="translateHistory_none">none</localize>
+                        </div>
+                        <div ng-if="node.Id > 0"
+                             class="translate-history-status">{{vm.showStatus(node.Status)}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="umb-dialog-footer btn-toolbar umb-btn-toolbar">
+        <a class="btn btn-link" ng-click="nav.hideDialog()">
+            <localize key="general_cancel">Cancel</localize>
+        </a>
+    </div>
+
+</div>

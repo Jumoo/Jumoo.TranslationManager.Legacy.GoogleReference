@@ -1,0 +1,5 @@
+﻿{
+	"javascript" : [
+		"~/App_Plugins/TranslateProvider.Google/Google.Controller.js"
+	]
+}

@@ -1,0 +1,132 @@
+<div ng-controller="translate.jobViewController as vm"  class="translatePlus">
+    <form name="submittedjob" novalidate>
+        <umb-editor-view>
+            <umb-editor-header
+                name="vm.pageTitle"
+                description="vm.description"
+                description-locked="true"
+                hide-alias="true"
+                name-locked="true"
+                hide-icon="true">
+            </umb-editor-header>
+            <umb-editor-container>
+                <umb-load-indicator ng-hide="vm.loaded"></umb-load-indicator>
+                <div class="umb-page" ng-show="vm.loaded">
+                    <div ng-if="vm.job == 'null'">
+                        <umb-empty-state position="center">
+                            <h5>Job not found</h5>
+                            <p>
+                                A job with this id does not exist
+                            </p>
+                        </umb-empty-state>
+                    </div>
+                    <div ng-if="vm.job != 'null'">
+
+                        <div ng-hide="vm.itemDetailView">
+                            <div class="job-dates">
+                                <div class="translate-job-language"><strong>{{vm.job.SourceCulture.DisplayName}}</strong><br /> to <strong>{{vm.job.TargetCulture.DisplayName}}</strong></div>
+                                <div class="translate-job-status-box translate-job-{{vm.job.Status}}">Status: <br /><strong>{{vm.job.localStatus}}</strong></div>
+                                <div> <strong>Created:</strong> <br /> {{vm.job.Created | date: 'medium' }} </div>
+                                <div> <strong>Submitted:</strong> <br />{{vm.job.Submitted | date: 'medium' }} </div>
+                                <div>
+                                    <strong>Received:</strong> <br />
+                                    <div ng-if="vm.job.Status != 'Submitted'" class="valid-date"> {{vm.job.Received | date: 'medium' }} </div>
+                                    <div ng-if="vm.job.Status == 'Submitted'"> N/A </div>
+                                </div>
+                            </div>
+                            <div class="job-status-provider">{{vm.job.ProviderName}}</div>
+                           
+                            <div class="job-provider-view">
+                                <translate-provider-view job="vm.job"
+                                                         view="vm.job.Status">
+                                </translate-provider-view>
+                            </div>
+
+                            <hr />
+                        </div>
+                        <translate-item-view culture="vm.cultureId"
+                                             job=" vm.jobId"
+                                             selectable="vm.selectable"
+                                             selected-by-default="true"
+                                             selected-items="vm.items">
+                        </translate-item-view>
+                    </div>
+                </div>
+            </umb-editor-container>
+            <umb-editor-footer>
+                <div class="job-item-progress">
+                    {{vm.update}}
+                    <umb-progress-bar percentage="{{vm.progressbar}}">                    </umb-progress-bar>
+                </div>
+
+
+                <umb-editor-footer-content-left>
+                    <div ng-show="vm.itemDetailView">
+                        <button class="btn btn-default" ng-click="vm.clearItemDetailView()">
+                            <localize key="general_back">Back</localize>
+                        </button>
+                    </div>
+                    <div ng-hide="vm.itemDetailView">
+                        <a href="javascript: window.history.back();"
+                           class="btn btn-info">
+                            <localize key="general_back">Back</localize>
+                        </a>
+                    </div>
+                </umb-editor-footer-content-left>
+
+                <umb-editor-footer-content-right>
+                    <div ng-show="!vm.itemDetailView">
+
+
+
+                        <umb-button action="vm.checkJob(vm.job)"
+                                    type="button"
+                                    button-style="link"
+                                    state="vm.checkButtonState"
+                                    label-key="translate_check"
+                                    disabled="vm.working"
+                                    ng-if="vm.job.Status == 'Submitted' || vm.job.Status == 'Partial'">
+                        </umb-button>
+
+                        <umb-button-group ng-if="vm.job.Status == 'Received' || vm.job.Status == 'Partial' || vm.job.Status == 'Reviewing'"
+                                          default-button="vm.buttonGroup.defaultButton"
+                                          sub-buttons="vm.buttonGroup.subButtons"
+                                          direction="up"
+                                          float="right"
+                                          state="vm.buttonGroup.state">
+                        </umb-button-group>
+
+                        <umb-button action="vm.cancelJob(vm.job)"
+                                    type="button"
+                                    button-style="danger"
+                                    state="vm.cancelButtonState"
+                                    label-key="general_cancel"
+                                    disabled="vm.working"
+                                    ng-if="vm.job.Status == 'Submitted'">
+                        </umb-button>
+
+
+                        <umb-button action="vm.resetStatus()"
+                                    type="button"
+                                    button-style="link"
+                                    state="vm.resetButtonState"
+                                    label-key="translate_reset"
+                                    disables="vm.working"
+                                    ng-if="vm.job.Status == 'Closed' || vm.job.Status == 'Accepted'">
+
+                        </umb-button>
+                        <umb-button action="vm.removeJob(vm.job)"
+                                    type="button"
+                                    button-style="danger"
+                                    state="vm.removeButtonState"
+                                    label-key="general_remove"
+                                    disabled="vm.working"
+                                    ng-if="vm.job.Status == 'Closed' || vm.job.Status == 'Accepted'">
+                        </umb-button>
+
+                    </div>
+                </umb-editor-footer-content-right>
+            </umb-editor-footer>
+        </umb-editor-view>
+    </form>
+</div>
